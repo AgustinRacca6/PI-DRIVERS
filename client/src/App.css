@@ -1,43 +1,134 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.App {
   text-align: center;
+  background-size: cover;
+  background-repeat: round;
+  min-height: 98vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.Cards {
+  padding-top: 2em;
+  display: grid;
+  margin-left: 5em;
+  margin-right: 5em;
+  gap: .5em;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.Teams{
+  padding-top: 3em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .3em;
+}
+
+.Team{
+    border: 2px solid black;
+    background-color: black;
+    width: 9em;
+    height: 12em;
+    transition: all 0.15s;
+    display: grid;
+    align-content: space-between;
+    justify-content: center;
+    filter: none;
+}
+.Team.active {
+  transform: translate(0, -10%);
+  background-color: white;
+  color: black;
+  border-color: aliceblue;
+  box-shadow: aliceblue 0 0 3px,
+  aliceblue 0 0px 10px;
+  filter: none;
+}
+.Team.noFocus{
+  filter: blur(5px);
+}
+.team-icon{
+  filter: drop-shadow(black 0px 3px 2px);
+}
+
+button {
+  cursor: pointer;
+  padding: .5em;
+  font-family: 'Press Start 2P', cursive;
+  font-size: .9em;
+  font-weight: bold;
+  color: white;
+  /* filter: drop-shadow(black -.1em .2em 0); */
+  text-shadow: black -.1em .15em 0;
+  border: 2px solid transparent;
+  background-color: transparent;
+  transition: all .3s;
+}
+
+button:hover {
+  border-bottom-color: red;
+  color: red;
+  font-weight: bold;
+}
+
+.activePage {
+  cursor: pointer;
+  padding: .5em;
+  font-size: 1em;
+  font-weight: bold;
+  border: 2px solid transparent;
+  border-bottom-color: red;
+  color: red;
+  font-weight: bold;
+}
+
+.contain-pages{
+  position: relative;
+  padding-top: 2em;
+  bottom: 0em;
+  display: flex;
+  justify-content: center;
+  gap: .5em;
+  flex-wrap: wrap;
+  margin-bottom: .5em;
+  margin-left: 2em;
+  margin-right: 2em;
+  font-size: .9em;
+}
+.contain-pagesTeams{
+  position: relative;
+  padding-top: 2em;
+  display: flex;
+  justify-content: center;
+  gap: .5em;
+  flex-wrap: wrap;
+  margin-bottom: .5em;
+}
+
+.filter{
+  background-color: rgba(0, 0, 0, 0.562);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  select{
+    height: 2.3em;
+    border-left: none;
   }
-  to {
-    transform: rotate(360deg);
-  }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.button-all{
+  background-color: transparent;
+  border: 2px solid transparent;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  height: 2.5em;
+  border-radius: 2px;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  text-shadow: none;
 }
-
-.card {
-  padding: 2em;
+.button-all:hover{
+  border-bottom-color: white;
+  box-shadow: none;
+  color: white;
 }
-
-.read-the-docs {
-  color: #c70909;
-}
-
