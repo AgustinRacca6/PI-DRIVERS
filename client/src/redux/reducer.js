@@ -1,55 +1,104 @@
-import { ORDER_FILTER, SET_ACCESS, SET_CURRENT_PAGE_TEAMS, SET_CURRENT_PATH, SET_DELETE, SET_ID_DELETE, SET_CURRENT_PAGE } from './actions/actionsTypes';
+import { GET_DRIVERS, GET_DRIVER_BY_ID, GET_DRIVERS_BY_NAME, GET_TEAMS, FILTER, ORDER, PAGINATE , RESET } from './action';
 
 const initialState = {
-  drivers: [],
-  currentPage:1,
-  currentPageTeams:1,
-  curretnPath:"",
-  access:false,
-  deleteStatus:false,
-  idDelete:""
+    allDrivers: [],
+    allDriversInmutable: [],
+    driverById: [],
+    allTeams: [],
+    currentPage: 1,
 };
 
 const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ORDER_FILTER:
-      return {
-        ...state,
-        drivers: action.payload.drivers,
-      };
-    case SET_CURRENT_PAGE:
-      return{
-        ...state,
-        currentPage:action.payload
-      };
-    case SET_CURRENT_PAGE_TEAMS:
-      return {
-        ...state,
-        currentPageTeams:action.payload
-      }
-    case SET_CURRENT_PATH:
-      return {
-        ...state,
-        curretnPath:action.payload
-      }
-    case SET_ACCESS:
-      return {
-        ...state,
-        access:action.payload
-      }
-    case SET_DELETE:
-      return {
-        ...state,
-        deleteStatus:action.payload
-      }
-    case SET_ID_DELETE:
-      return {
-        ...state,
-        idDelete:action.payload
-      }
-    default:
-      return state;
-  }
-};
+
+    switch (action.type) {
+        case GET_DRIVERS:
+            return {
+                ...state,
+                allDrivers: action.payload,
+                allDriversInmutable: action.payload
+            }
+        case GET_DRIVERS_BY_NAME:
+            return {
+                ...state,
+                allDrivers: action.payload
+            }
+        case GET_DRIVER_BY_ID:
+            return {
+                ...state,
+                driverById: action.payload
+            }
+        case GET_TEAMS:
+            return {
+                ...state,
+                allTeams: action.payload
+            }
+        case FILTER:
+
+            const [team, origin] = action.payload;
+
+            let filtered = [...state.allDrivers];
+
+            if (team !== '--Todos--') {
+                filtered = filtered.filter((driver) => driver && driver.teams && driver.teams.includes(team));
+            }
+
+            if (origin !== '--Todos--') {
+                if (origin === 'API') {
+                    filtered = filtered.filter((driver) => driver && driver.driverRef);
+                } else if (origin === 'DB') {
+                    filtered = filtered.filter((driver) => driver && !driver.driverRef);
+                }
+            }
+
+            return {
+                ...state,
+                allDrivers : filtered
+            }
+
+        case ORDER:
+
+            const [tipo,asc_desc] = action.payload;
+
+            let ordered = [...state.allDrivers];
+
+            if (tipo==='name') {
+                if (asc_desc==='ASC') {
+                    ordered.sort((a, b) => a.name.forename.localeCompare(b.name.forename));
+                } else {
+                    ordered.sort((a, b) => b.name.forename.localeCompare(a.name.forename));
+                }
+            } else {
+                if (asc_desc==='ASC') {
+                    ordered.sort((a, b) => new Date(a.dob) - new Date(b.dob));
+                } else {
+                    ordered.sort((a, b) => new Date(b.dob) - new Date(a.dob));
+                }
+            }
+
+            return {
+                ...state,
+                allDrivers : ordered
+            }
+
+        case PAGINATE:
+
+            return {
+                ...state,
+                currentPage : action.payload
+            }
+
+        case RESET:
+            return {
+                ...state,
+                allDrivers: state.allDriversInmutable,
+                currentPage: 1,
+            }
+        default:
+            return {
+                ...state
+            }
+    }
+
+}
 
 export default reducer;

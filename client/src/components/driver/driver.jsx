@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import "./driver.css"
 
 const Driver = ({ corredor }) => {
-  const { id, name, lastname, nationality, birthday } = corredor;
+  const { id, name, lastname, nationality, birthday, image } = corredor;
   const navigate = useNavigate()
 
   const generateRandomColor = () => {
@@ -25,7 +25,7 @@ const Driver = ({ corredor }) => {
   return (
     <div onClick={() => navigate(`/driver/${id}`)} className="Driver" style={cardStyle}>
       <div className="icon-driver">
-      <img src="/F1.svg" alt="" width={80} className={cardStyle.backgroundColor === "black" ? "imagen" : ""} />
+      <img src={image.url.url} alt="" width={80} className={cardStyle.backgroundColor === "black" ? "imagen" : ""} />
       </div>
       <h3 className="apellido">{lastname.toUpperCase()}</h3>
       <h3 className="nombre">{name.toUpperCase()}</h3>

@@ -44,7 +44,7 @@ function App() {
   const onSearch = async (param) => {
     try {
       const { data } = await axios(
-        `http://localhost:3001/driver?name=${param}`
+        `http://localhost:3001/drivers/search?name=${param}`
       );
       setDriver(data);
     } catch (error) {

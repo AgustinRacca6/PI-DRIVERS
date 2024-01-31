@@ -17,7 +17,7 @@ const Detail = ({ navigate, handleBackChange }) => {
   const [driver, setDriver] = useState({})
 
   useEffect(() => {
-    axios(`http://localhost:3001/driver/${id}`).then(
+    axios(`http://localhost:3001/drivers/${id}`).then(
       ({ data }) => {
         if (data.name) {
           setDriver(data)
