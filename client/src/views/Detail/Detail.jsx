@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDriverById } from "../../redux/action";
 import { useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import './Detail.css';
+
 
 export default function Detail() {
 

@@ -199,12 +199,17 @@ height: 100vh;
 
 
 /* CARD */
+
 .driver-detail-container {
-  border: 1px solid #070202; /* Borde de la tarjeta */
+  border: 10px solid #000; /* Borde negro de 10px */
+  border-top-width: 10px; /* Ancho del borde superior */
+  border-bottom-width: 10px; /* Ancho del borde inferior */
+  border-left-width: 20px; /* Ancho del borde izquierdo (doble que los bordes superior e inferior) */
+  border-right-width: 20px; /* Ancho del borde derecho (doble que los bordes superior e inferior) */
   border-radius: 5px; /* Borde redondeado */
   margin: 10px; /* Margen exterior */
-  padding: 10px; /* Relleno interior */
-  background-color: #FADBD8; /* Color pastel como fondo */
+  padding: 20px; /* Relleno interior */
+  background-color: #f50606; /* Fondo rojo */
 }
 
 .driver-link {
@@ -225,42 +230,75 @@ height: 100vh;
 .driver-birthday,
 .driver-teams {
   margin-bottom: 10px; /* Margen inferior */
+  color: white; /* Color del texto blanco para contrastar con el fondo rojo */
 }
 
 .driver-image {
-  width: 100px; /* Ancho de la imagen */
+  width: 100%; /* Ancho de la imagen al 100% para que se ajuste al contenedor */
+  max-width: 200px; /* Ancho máximo de la imagen */
   height: auto; /* Altura automática para mantener la proporción */
   margin-bottom: 10px; /* Margen inferior */
+  border-radius: 5px; /* Borde redondeado para la imagen */
 }
-
-
-
-/* HOME PAGE */
-
-.homepage-container {
-  background-color: #001F3F; /* Color azul marino */
-  padding: 20px; /* Espaciado interior */
-  min-height: 100vh; /* Altura mínima de la página */
-  color: #ffffff; /* Color de texto */
-}
-
 
 /* DETAIL */
 .detail-container {
-  background-color: #FADBD8; /* Color pastel */
-  padding: 20px;
-  border-radius: 5px;
+  border: 1px solid #ccc; /* Borde de la tarjeta */
+  border-radius: 5px; /* Borde redondeado */
+  margin: 10px; /* Margen exterior */
+  padding: 20px; /* Relleno interior */
+  background-color: #FF5733; /* Fondo rojo */
 }
 
-.detail-container h2 {
-  color: #333333;
+.detail-title {
+  font-size: 24px; /* Tamaño del título */
+  margin-bottom: 20px; /* Margen inferior */
 }
 
-.driver-image {
-  max-width: 100%;
-  height: auto;
-  margin-top: 10px;
+.detail-info {
+  color: white; /* Color del texto */
+}
+
+.detail-info > div {
+  margin-bottom: 10px; /* Margen inferior entre cada elemento */
 }
 
 
+/* FORM */
 
+.form-container {
+  background-color: #ff0000; /* Fondo rojo */
+  padding: 20px; /* Espaciado interno */
+  border: 1px solid #000; /* Borde negro */
+  border-radius: 5px; /* Borde redondeado */
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container label {
+  margin-bottom: 5px; /* Margen inferior para etiquetas */
+}
+
+.form-container input,
+.form-container select {
+  margin-bottom: 10px; /* Margen inferior para inputs y selects */
+  padding: 5px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde gris */
+  border-radius: 3px; /* Borde redondeado */
+}
+
+.form-container input[type="submit"] {
+  background-color: #0000ff; /* Color de fondo azul */
+  color: #fff; /* Color del texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  cursor: pointer; /* Cambio de cursor al pasar */
+  border-radius: 3px; /* Borde redondeado */
+}
+
+.form-container input[type="submit"]:hover {
+  background-color: #333; /* Color de fondo azul oscuro al pasar */
+}
